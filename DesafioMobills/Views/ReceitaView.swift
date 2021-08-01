@@ -44,6 +44,11 @@ class ReceitaView: UIView {
         self.collectionView.delegate = self
     }
 
+    func updateData() {
+      self.receitas = self.receitaCRUD.search()
+      self.collectionView.reloadData()
+    }
+
     private func configureLayout() {
         NSLayoutConstraint.activate([
             self.collectionView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -58,8 +63,7 @@ class ReceitaView: UIView {
             
             let delete = UIAction(title: "Delete") { (action) in
                 self.receitaCRUD.delete(Receita: resc)
-                self.receitas = self.receitaCRUD.search()
-                self.collectionView.reloadData()
+                self.updateData()
             }
             return delete
             
@@ -73,8 +77,7 @@ class ReceitaView: UIView {
             
             let edit = UIAction(title: "Editar") { (action) in
                 self.showEditView?(resc) {
-                    self.receitas = self.receitaCRUD.search()
-                    self.collectionView.reloadData()
+                    self.updateData()
                 }
             }
             return edit

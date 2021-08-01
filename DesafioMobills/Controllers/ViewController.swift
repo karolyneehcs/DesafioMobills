@@ -9,11 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let mainview = MainView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = MainView()
         mainview.despesaView.showEditView = self.showEditDespesa
         mainview.receitaView.showEditView = self.showEditReceita
+        mainview.actionDespesa = self.createDespesa
+        mainview.actionReceita = self.createReceita
         self.view = mainview
         let des = ReceitaCRUD()
 
@@ -37,4 +40,28 @@ class ViewController: UIViewController {
         let nav = UINavigationController(rootViewController: viewController)
         self.navigationController?.present(nav, animated: true)
     }
+
+  func createReceita() {
+//      print("chamou? to aqui")
+      let viewController = CreateViewController()
+      viewController.eReceita = true
+      viewController.completion = {
+        self.mainview.receitaView.updateData()
+      }
+      let nav = UINavigationController(rootViewController: viewController)
+      self.navigationController?.present(nav, animated: true, completion: nil)
+    }
+
+  func createDespesa() {
+//      print("chamou? to aqui")
+    let viewController = CreateViewController()
+    viewController.eReceita = false 
+    viewController.completion = {
+      self.mainview.despesaView.despesas = self.mainview.despesaView.despesaCRUD.search()
+      self.mainview.despesaView.collectionView.reloadData()
+    }
+    let nav = UINavigationController(rootViewController: viewController)
+    self.navigationController?.present(nav, animated: true, completion: nil)
+  }
+
 }

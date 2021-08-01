@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68223DB926B6DA2C003D49A1 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68223DB826B6DA2C003D49A1 /* CreateViewController.swift */; };
 		A22C6A0E26B5E0F200055107 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C6A0D26B5E0F200055107 /* EditViewController.swift */; };
 		A22C6A1026B5E10900055107 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C6A0F26B5E10900055107 /* EditView.swift */; };
 		A24B31B826B5CAEF00A9512F /* ReceitaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24B31B726B5CAEF00A9512F /* ReceitaViewCell.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68223DB826B6DA2C003D49A1 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		A22C6A0D26B5E0F200055107 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A22C6A0F26B5E10900055107 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		A24B31B726B5CAEF00A9512F /* ReceitaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceitaViewCell.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				A2AE552F26B4D2860092ACEC /* DespesaViewController.swift */,
 				A2AE553126B4D2980092ACEC /* ReceitaViewController.swift */,
 				A22C6A0D26B5E0F200055107 /* EditViewController.swift */,
+				68223DB826B6DA2C003D49A1 /* CreateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				A2AE552E26B4D2770092ACEC /* ReceitaView.swift in Sources */,
 				A22C6A1026B5E10900055107 /* EditView.swift in Sources */,
 				A2AE553626B4D95B0092ACEC /* MainView.swift in Sources */,
+				68223DB926B6DA2C003D49A1 /* CreateViewController.swift in Sources */,
 				A24B31B826B5CAEF00A9512F /* ReceitaViewCell.swift in Sources */,
 				A2AE552A26B4D1C10092ACEC /* ReceitaCRUD.swift in Sources */,
 				A2AE552626B4CB490092ACEC /* CoreDataStack.swift in Sources */,

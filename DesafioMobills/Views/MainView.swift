@@ -8,6 +8,8 @@
 import UIKit
 
 class MainView: UIView {
+    var actionDespesa: (() -> Void )? = nil
+    var actionReceita: (() -> Void)? = nil
 
     let despesaSection: UILabel = {
         let label = UILabel()
@@ -24,12 +26,45 @@ class MainView: UIView {
     }()
     
     let receitaView = ReceitaView()
-    
+
+  let buttonAddReceita: UIButton = {
+      let button = UIButton()
+      let largeConfiguration = UIImage.SymbolConfiguration(scale: .large)
+      let imageSymbol = UIImage(systemName: "plus.circle.fill", withConfiguration: largeConfiguration)
+      let imageSymbolNew = imageSymbol?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
+      button.translatesAutoresizingMaskIntoConstraints = false
+      button.setImage(imageSymbolNew, for: .normal)
+      button.setTitleColor(.systemBlue, for: .normal)
+    button.addTarget(self, action: #selector(addReceita), for: .touchUpInside)
+      return button
+    }()
+
+  let buttonAddDespesa: UIButton = {
+      let button = UIButton()
+      let largeConfiguration = UIImage.SymbolConfiguration(scale: .large)
+      let imageSymbol = UIImage(systemName: "plus.circle.fill", withConfiguration: largeConfiguration)
+      let imageSymbolNew = imageSymbol?.withTintColor(.systemPurple, renderingMode: .alwaysOriginal)
+      button.translatesAutoresizingMaskIntoConstraints = false
+      button.setImage(imageSymbolNew, for: .normal)
+      button.setTitleColor(.systemPurple, for: .normal)
+    button.addTarget(self, action: #selector(addDespesa), for: .touchUpInside)
+      return button
+    }()
+
+  @objc func addReceita() {
+    self.actionReceita?()
+  }
+
+  @objc func addDespesa() {
+    self.actionDespesa?()
+  }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
         self.setupUpDespesasSection()
         self.setupUpReceitasSection()
+        self.setupButton()
     }
     
     required init?(coder: NSCoder) {
@@ -69,5 +104,28 @@ class MainView: UIView {
             self.receitaView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2),
         ])
     }
+
+  private func setupButton() {
+    self.addSubview(buttonAddReceita)
+    self.addSubview(buttonAddDespesa)
+
+    self.buttonAddReceita.translatesAutoresizingMaskIntoConstraints = false
+    self.buttonAddDespesa.translatesAutoresizingMaskIntoConstraints = false
+
+    NSLayoutConstraint.activate([
+      self.buttonAddReceita.topAnchor.constraint(equalTo: self.centerYAnchor, constant: -65),
+      self.buttonAddReceita.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 150),
+      self.buttonAddReceita.widthAnchor.constraint(equalToConstant: 50),
+      self.buttonAddReceita.heightAnchor.constraint(equalToConstant: 50)
+    ])
+
+    NSLayoutConstraint.activate([
+      self.buttonAddDespesa.topAnchor.constraint(equalTo: self.centerYAnchor, constant: -340),
+      self.buttonAddDespesa.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 150),
+      self.buttonAddDespesa.widthAnchor.constraint(equalToConstant: 50),
+      self.buttonAddDespesa.heightAnchor.constraint(equalToConstant: 50)
+    ])
+
+  }
     
 }
